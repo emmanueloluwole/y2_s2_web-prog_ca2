@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CarApiService } from '../../services/car-api.service';
 import { Icar } from '../../interfaces/car';
 import { NewCar } from '../../interfaces/car';
+import { CarComponent } from '../car/car.component';
 
 
 @Component({
   selector: 'app-carlist',
-  imports: [CommonModule],
+  imports: [CommonModule, CarComponent],
   templateUrl: './carlist.component.html',
   styleUrl: './carlist.component.css'
 })
