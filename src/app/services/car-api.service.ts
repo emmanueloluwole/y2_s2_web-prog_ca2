@@ -4,12 +4,17 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs';
 import { tap } from 'rxjs';
 import { Icar } from '../interfaces/car';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class CarApiService {
-   private _siteURL = "http://localhost:5050/cars"
+  //  private _siteURL = "http://localhost:5050/cars"
 
+  
+    //  private _siteURL = "http://localhost:5050/cars"
+  
+    private _siteURL = environment.apiURL;
   constructor(private _http: HttpClient) { }
 
   getCarDetails():Observable<any> {
