@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarApiService } from '../../services/car-api.service';
 import { Icar } from '../../interfaces/car';
@@ -13,6 +13,7 @@ import { CarComponent } from '../car/car.component';
   styleUrl: './carlist.component.css'
 })
 export class CarlistComponent {
+ 
   carsData:any;
   show: boolean = false
 
@@ -21,6 +22,9 @@ export class CarlistComponent {
 
   ngOnInit() {
     this.getCars()
+  }
+  refreshCars(){
+    this.getCars();
   }
 
   getCars() {
@@ -33,8 +37,15 @@ export class CarlistComponent {
     let addCar:Icar;
     addCar=new NewCar(make,model,year,imageUrl);
     this._carAPIService.addCarDetails(addCar).subscribe(carsData =>
-      { this.carsData = carsData}
+      { this.carsData = carsData  
+         this.getCars() }
+
     );
+
+   
+
+   
+   
 
     return false;
   }
